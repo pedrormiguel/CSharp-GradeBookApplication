@@ -45,7 +45,7 @@ namespace GradeBook.UserInterfaces
             var name = parts[2];
             var NameOfBook = parts[1];
 
-            BaseGradeBook gradeBook = new BaseGradeBook(NameOfBook);
+            BaseGradeBook gradeBook;
 
             switch (name)
             {

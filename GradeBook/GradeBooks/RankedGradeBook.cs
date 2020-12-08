@@ -5,6 +5,14 @@ namespace GradeBook.GradeBooks
 {
     public class RankedGradeBook : BaseGradeBook
     {
+        public bool _studentListIsLessMinimum
+        {
+            get
+            {
+                return Students.Count < 5 ? true : false;
+            }
+        }
+
         public RankedGradeBook(string name) : base(name)
         {
             Type = Enums.GradeBookType.Ranked;
@@ -14,10 +22,10 @@ namespace GradeBook.GradeBooks
         {
             var AmountStundent = Students.Count;
             
-            if (AmountStundent < 5)
+            if (this._studentListIsLessMinimum)
                 throw new InvalidOperationException();
 
-            var AmountStudentPerpercentage = int.Parse( (AmountStundent * .20).ToString() );
+            var AmountStudentPerpercentage = Convert.ToInt32(AmountStundent * .20);
 
             var orderStudentGrade = Students.OrderByDescending( x => x.AverageGrade ).ToList();
 
@@ -54,6 +62,33 @@ namespace GradeBook.GradeBooks
 
             return 'F';
 
+        }
+
+        public override void CalculateStatistics()
+        {
+            var message = "Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.";
+
+            if (this._studentListIsLessMinimum)
+            {
+                  Console.WriteLine(message);
+                  return;
+            }
+
+            base.CalculateStatistics();
+        }
+
+        public override void CalculateStudentStatistics(string name)
+        {
+            var message = "Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.";
+
+
+            if (this._studentListIsLessMinimum)
+            {
+                Console.WriteLine(message);
+                return;
+            }
+
+            base.CalculateStudentStatistics(name);
         }
     }
 }

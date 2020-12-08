@@ -27,7 +27,7 @@ namespace GradeBook.GradeBooks
             {
                 var itemsSelected = orderStudentGrade.GetRange(i, AmountStudentPerpercentage);
 
-                if (itemsSelected.Exists(x => x.AverageGrade >= averageGrade))
+                if (itemsSelected.Exists(x => x.AverageGrade <= averageGrade))
                 {
                     range++;
                     break;
@@ -50,9 +50,6 @@ namespace GradeBook.GradeBooks
 
                 case 4:
                     return 'D';
-
-                default:
-                    return 'F';
             }
 
             return 'F';

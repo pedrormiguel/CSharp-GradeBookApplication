@@ -111,18 +111,23 @@ namespace GradeBook.GradeBooks
         {
             var ouput = 0;
 
-            switch (letterGrade)
+              switch (letterGrade)
             {
                 case 'A':
-                    return 4;
+                    ouput = 4;
+                    break;
                 case 'B':
-                    return 3;
+                    ouput = 3;
+                    break;
                 case 'C':
-                    return 2;
+                    ouput = 2;
+                    break;
                 case 'D':
-                    return 1;
+                    ouput = 1;
+                    break;
                 case 'F':
-                    return 0;
+                    ouput = 0;
+                    break;
             }
 
             if (IsWeighted && ( studentType == StudentType.Honors || studentType == StudentType.DualEnrolled) )

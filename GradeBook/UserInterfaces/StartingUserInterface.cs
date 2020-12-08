@@ -43,24 +43,25 @@ namespace GradeBook.UserInterfaces
             }
 
             var name = parts[2];
+            var NameOfBook = parts[1];
 
-            BaseGradeBook gradeBook = new BaseGradeBook(name);
+            BaseGradeBook gradeBook = new BaseGradeBook(NameOfBook);
 
             switch (name)
             {
                 case "standard":
 
-                    gradeBook = new StandardGradeBook(name);
+                    gradeBook = new StandardGradeBook(NameOfBook);
                     break;
 
                 case "ranked":
 
-                    gradeBook = new RankedGradeBook(name);
+                    gradeBook = new RankedGradeBook(NameOfBook);
                     break;
 
                 default:
 
-                    Console.WriteLine($"{name}is not a supported type of gradebook, please try again");
+                    Console.WriteLine($"{name} is not a supported type of gradebook, please try again");
                     break;
                     
             }
